@@ -1,0 +1,359 @@
+/* Новый промо-блок первой страницы */
+
+.aspirantura-promo {
+    margin-bottom: 60px;
+}
+
+.aspirantura-general-image {
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.aspirantura-promo-container {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px 0px !important;
+}
+
+.aspirantura-message {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.aspirantura-promo-subcontainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.aspirantura-microcontainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.aspirantura-microcontainer>div {
+    text-align: center;
+}
+
+.big-number {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #ff6600 !important;
+    padding: 20px!important;
+}
+
+@media (max-width: 586px) {
+    .aspirantura-promo-container {
+        padding: 20px !important;
+    }
+    .aspirantura-message {
+        text-align: left;
+    }
+    .aspirantura-microcontainer {
+        flex-direction: row;
+        justify-content: left;
+        width: 100%;
+    }
+    .aspirantura-promo-subcontainer {
+        flex-wrap: wrap;
+    }
+    .aspirantura-microcontainer>div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .big-number {
+        display: inline-block !important;
+        width: 35%;
+        padding: 20px 0px 20px 0px !important;
+        text-align: left !important;
+    }
+}
+
+/* -- */
+
+/* Карточки направлений и программ */
+
+.cards-programs-box {
+    text-align: center;
+    margin: 0 0px 0 -8px;
+}
+
+.flip {
+    display: inline-block;
+    position: relative;
+    width: 296px;
+    height: 200px;
+    border-radius: 9px;
+    margin: 8px;
+    background-position: center !important;
+    background-size: cover !important;
+    transition: .2s !important;
+    color: white !important;
+}
+
+.flip:hover {
+    box-shadow: 8px 8px 0px rgba(255, 102, 0, 0.9);
+    transition: .2s !important;
+    background-size: 200px;
+    color: white !important;
+}
+
+.flip-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: .2s !important;
+    background: linear-gradient(to bottom, transparent 30%, #000000);
+    color: white !important;
+}
+
+.flip-box:hover {
+    background: linear-gradient(to bottom, transparent 70%, #000000);
+    transition-duration: .2s !important;
+}
+
+.title {
+    position: absolute;
+    bottom: 20px;
+    margin: 10px;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.number-direction {
+    position: absolute;
+    bottom: -4px;
+    left: 10px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.last-flip {
+    background: linear-gradient(135deg, #3a332f 0%, #403935 100%);
+}
+
+.last-flip>.flip-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.last-flip>.flip-box>.title {
+    bottom: 50%;
+    top: 50%;
+    margin: 0;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 586px) {
+    .flip {
+        width: calc(100% - 9px);
+    }
+}
+
+@media (min-width: 587px) and (max-width: 1299px) {
+    .flip {
+        width: calc(47.5% - 9px);
+    }
+}
+
+/* -- */
+
+/* Промо блок в категории */
+
+.category-promo {
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* -- */
+
+/* Нижнее навигационное меню */
+
+.pills-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    gap: 8px;
+}
+
+.pill {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 180px;
+    color: #1785EB !important;
+    border-radius: 100px;
+    border: 1px solid #1785EB !important;
+    text-decoration: none !important;
+    padding: 6px 6px;
+    transition: 0.3s !important;
+}
+
+.pill:hover {
+    box-shadow: inset 100px 0 100px 0 #1785EB, inset 200px 0 100px 0 #0F5698;
+    border-color: linear-gradient(0.65turn, #0F5698, #1785EB);
+    color: #fff !important;
+}
+
+.pill:visited {
+    border-color: #1785EB !important;
+}
+
+/* -- */
+
+/* Хедер для образовательной программы */
+
+.aspirantura-head {
+    display: flex;
+    background-color: #f4f4f4;
+    margin-bottom: 27px;
+    width: calc(100% - 1px);
+}
+
+.aspirantura-head-column-left {
+    width: 66.66%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 300px;
+}
+
+.aspirantura-head-column-right {
+    width: 33.33%;
+    padding: 20px 0 0 20px;
+}
+
+@media (max-width: 1299px) {
+    .aspirantura-head-column-left {
+        width: 50%;
+    }
+    .aspirantura-head-column-right {
+        width: 50%;
+    }
+}
+
+@media (max-width: 586px) {
+    .aspirantura-head {
+        flex-wrap: wrap;
+    }
+    .aspirantura-head-column-left {
+        width: 100%;
+    }
+    .aspirantura-head-column-right {
+        width: 100%;
+    }
+}
+
+/* -- */
+
+/* Меню табов */
+
+.aspirantura-tab-menu {
+    display: flex;
+    flex-wrap: no-wrap;
+    gap: 8px;
+}
+
+.aspirantura-tab-menu>a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 16px 8px;
+    width: 100%;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    background: linear-gradient(135deg, #3a332f 0%, #403935 100%);
+}
+
+.aspirantura-tab-menu>a:visited {
+    border: none;
+    width: 100%;
+    color: white;
+}
+
+.aspirantura-tab-menu>a:hover {
+    background: linear-gradient(135deg, #ff8700 0%, #ff6000 100%);
+    color: white;
+}
+
+.tab-active {
+    background: linear-gradient(135deg, #ff8700 0%, #ff6000 100%) !important;
+    color: white !important;
+}
+
+/* -- */
+
+/* Контент табов */
+
+.tabs-page {
+    border-top: 1px solid lightgray;
+    /* border-bottom: 1px solid lightgray; */
+    margin: 40px 0 40px 0;
+    padding: 20px 0 20px 0;
+}
+
+@media (max-width: 586px) {
+    .aspirantura-tab-menu {
+        display: block;
+    }
+    .aspirantura-tab-menu>a {
+        display: block;
+        margin: 4px 0;
+        padding: 8px 0;
+    }
+}
+
+/* -- */
+
+/* Карточки преподавателей */
+
+.gallery-item-image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+}
+
+.gallery-item>a strong {
+    color: #5f8a96 !important;
+}
+
+.gallery-item>a:hover strong {
+    color: #5f8a96 !important;
+}
+
+.gallery-item>a:visited strong {
+    color: #5f8a96 !important;
+}
+
+.gallery-item-title-text {
+    text-align: left!important;
+    height: 100px;
+}
+
+.gallery-item-title-text>strong {
+    font-style: normal;
+    margin: 6px 0px !important;
+    display: block;
+}
+
+.gallery-item-title-text>p {
+    font-style: normal;
+}
+
+/* -- */
