@@ -57,10 +57,12 @@ function page_2($preview, $base_realisation, $programs_list)
 {
     get_links();
 
+    $title = substr(drupal_get_title(), 9);
+
     echo "
         <div class='category-promo' style='background-image: url(/files/aspirantura/second_page/promo/$preview);'></div>
         <blockquote>
-            <p>Направление «Математика и механика» реализуется на базе $base_realisation</p>
+            <p>Направление &Lt;$title&Gt; реализуется на базе $base_realisation</p>
         </blockquote>
     ";
 
@@ -85,7 +87,7 @@ function get_programs($programs_list)
     }
 
     echo "
-        <a href='http://edu.sfu-kras.ru/programs' class='flip last-flip'>
+        <a href='http://edu.sfu-kras.ru/programs?fgos=0&level=06&institute=0&keywords=&oop_lang=0&eo_dot=4' class='flip last-flip'>
             <div class='flip-box'>
                 <h1 class='title'>Смотреть все программы</h1>
             </div>
@@ -162,7 +164,7 @@ function get_tab_admission_to_the_program($introsuction_program)
     <ul class='attachments'>
     <li class='link-text'><a href='http://about.sfu-kras.ru/node/8972/pdf' target='_blank'>Правила приёма</a></li>
     <li class='link-text'><a href='/files/aspirantura/files/algorithm.pdf' target='_blank'>Алгоритм поступления</a></li>
-    <li class='link-text'><a href='/files/aspirantura/files/calendar.pdf' target='_blank'>Календарь приема</a></li>
+    <li class='link-text'><a href='/files/aspirantura/files/calendar.pdf' target='_blank'>Календарь приёма</a></li>
     <!-- Для каждой своя -->
     <li class='link-text'><a href='{$introsuction_program['Программа вступительного испытания']}' target='_blank'>Программа вступительного испытания</a></li>
     </ul>
