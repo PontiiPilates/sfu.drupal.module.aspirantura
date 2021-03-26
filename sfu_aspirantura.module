@@ -132,11 +132,20 @@ function page_3($header_list, $introsuction_program, $programs_list, $base_progr
         </nav>
     ";
 
-    get_tab_admission_to_the_program($introsuction_program);
+    // если мест на нет то формируем таб без программ вступительного испытания
+    if ($header_list['Бюджетных мест'] == 0 && $header_list['На платной основе'] == 0) {
+        get_tab_admission_to_the_program_novac_midify();
+    } else {
+        get_tab_admission_to_the_program($introsuction_program);
+    }
+
     get_tab_educational_programs($programs_list, $base_program);
     get_tab_candidate_exams($section_list);
     get_tab_advisers($advisers_list);
-    get_tab_timetable($timetable_list, 'осенний', 'зимней', '2020-2021');
+
+    // в зависимости от наличия расписания, показываем универсальную ссылку или все формы и курсы
+    // get_tab_timetable($timetable_list, 'осенний', 'зимней', '2020-2021');
+    get_tab_timetable_empty();
 
     get_bottom_menu();
     get_script_from_tabs();
@@ -195,6 +204,49 @@ function get_tab_admission_to_the_program($introsuction_program)
     ";
 };
 
+// это правка для первого таба, но позже появилась другая правка, но эту не буду удалять на всякий случай
+function get_tab_admission_to_the_program_novac()
+{
+    echo "
+    <section class='tabs-page active' id='page1'>
+    <ul class='attachments'>
+    <li class='link-text'><a href='http://about.sfu-kras.ru/node/8972/pdf' target='_blank'>Правила приёма</a></li>
+    <li class='link-text'><a href='/files/aspirantura/files/algorithm.pdf' target='_blank'>Алгоритм поступления</a></li>
+    <li class='link-text'><a href='/files/aspirantura/files/calendar.pdf' target='_blank'>Календарь приёма</a></li>
+    </ul>
+    </section>
+    ";
+}
+
+// это модифицированный контент для первого таба
+function get_tab_admission_to_the_program_novac_midify()
+{
+    echo "
+    <section class='tabs-page active' id='page1'>
+        <ul class='attachments'>
+            <li class='link-text'><a href='http://about.sfu-kras.ru/node/8972/pdf' target='_blank'>Правила приёма</a></li>
+            <li class='link-text'><a href='/files/aspirantura/files/algorithm.pdf' target='_blank'>Алгоритм поступления</a></li>
+            <li class='link-text'><a href='/files/aspirantura/files/calendar.pdf' target='_blank'>Календарь приёма</a></li>
+        </ul>
+        <ul>
+            <li><a href='http://admissions.sfu-kras.ru/post-graduates/rating'>Учёт индивидуальных достижений</a></li>
+            <li><a href='http://about.sfu-kras.ru/node/9125'>Правила подачи апелляции</a></li>
+            <li>Обучение на основе договора о платном обучении:
+                <ul>
+                    <li><a href='http://about.sfu-kras.ru/node/9303'>Договор (2 сторонний)</a></li>
+                    <li><a href='http://about.sfu-kras.ru/node/9304'>Договор (3 сторонний)</a></li>
+                    <li><a href='http://edu.sfu-kras.ru/programs/cost#aspirantura-cost'>Стоимость</a></li>
+                </ul>
+            </li>
+            <li><a href='http://admissions.sfu-kras.ru/post-graduates/target'>Целевое обучение</a></li>
+            <li><a href='http://admissions.sfu-kras.ru/post-graduates/priem#places'>Адреса и способы подачи</a></li>
+            <li><a href='http://about.sfu-kras.ru/node/9318'>Форма заявления на предоставление места в общежитии</a></li>
+        </ul>
+    </section>
+    ";
+}
+
+
 // таб 2
 function get_tab_educational_programs($programs_list, $base_program)
 {
@@ -226,6 +278,7 @@ function get_tab_educational_programs($programs_list, $base_program)
 // таб 3
 function get_tab_candidate_exams($section_list)
 {
+    $time = time();
     echo "
         <section class='tabs-page' id='page3'>
             <ul class='attachments'>
@@ -240,8 +293,8 @@ function get_tab_candidate_exams($section_list)
                 <li class='link-text'><a href='{$section_list['Фонд оценочных средств']}' target='_blank'>Фонд оценочных средств</a></li>
                 <br>
                 <strong>Программа кандидатского экзамена по дисциплине 'Иностранный язык'</strong>
-                <li class='link-text'><a href='http://research.sfu-kras.ru/sites/research.sfu-kras.ru/files/sfu-asp-foreign-ochno.pdf' target='_blank'>Рабочая программа дисциплины (очная форма)</a></li>
-                <li class='link-text'><a href='http://research.sfu-kras.ru/sites/research.sfu-kras.ru/files/sfu-asp-foreign-zaochno.pdf' target='_blank'>Рабочая программа дисциплины (заочная форма)</a></li>
+                <li class='link-text'><a href='http://research.sfu-kras.ru/files/aspirantura/files/sfu-asp-foreign-ochno.pdf?$time' target='_blank'>Рабочая программа дисциплины (очная форма)</a></li>
+                <li class='link-text'><a href='http://research.sfu-kras.ru/files/aspirantura/files/sfu-asp-foreign-zaochno.pdf?$time' target='_blank'>Рабочая программа дисциплины (заочная форма)</a></li>
             </ul>
         </section>
     ";
@@ -317,6 +370,18 @@ function get_tab_timetable($timetable_list, $first_season, $second_season, $year
     ";
 }
 
+// таб 5, на время, пока нет расписания
+function get_tab_timetable_empty()
+{
+    echo "
+    <section class='tabs-page' id='page5'>
+    <ul>
+    <li><a href='http://research.sfu-kras.ru/aspirantura/timetable' target='_blank'>Расписание занятий, зачётов и экзаменов</a></li>
+    </ul>
+    </section>
+    ";
+}
+
 // подключения
 function get_links()
 {
@@ -327,13 +392,14 @@ function get_links()
 // нижнее меню
 function get_bottom_menu()
 {
+    $timestamp = time();
     echo "
         <nav class='pills-box'>
             <a href='/files/aspirantura/files/algorithm.pdf' target='_blank' class='pill'>Алгоритм поступления</a>
             <a href='http://admissions.sfu-kras.ru/post-graduates' class='pill'>Поступление</a>
             <a href='http://research.sfu-kras.ru/aspirantura#asp-edu' class='pill'>Обучение</a>
             <a href='http://research.sfu-kras.ru/aspirantura/attestation' class='pill'>Промежуточная аттестация</a>
-            <a href='http://admissions.sfu-kras.ru/files/admissions/2020/other/asp-suprvisor.pdf' class='pill'>Научные руководители</a>
+            <a href='http://admissions.sfu-kras.ru/files/admissions/2020/other/asp-suprvisor.pdf?$timestamp' target='_blank' class='pill'>Научные руководители</a>
             <a href='http://research.sfu-kras.ru/aspirantura/specialities' class='pill'>Формы</a>
             <!-- <a href='http://research.sfu-kras.ru/aspirantura/specialities' class='pill'>Заказ справок</a> -->
             <a href='http://about.sfu-kras.ru/campus/hostels' class='pill'>Общежитие</a>
